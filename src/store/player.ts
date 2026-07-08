@@ -107,7 +107,7 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
       const state = await TrackPlayer.getPlaybackState();
       set({ isPlaying: state.state === 'playing' || (state as any) === 3 });
     });
-    // We don't keep refs to remove; RNTP cleans listeners per reset, and app lifetime is fine here.
+
     try {
       await AsyncStorage.setItem('player_state', JSON.stringify({ queue: tracks, index: startIndex }));
     } catch {}
